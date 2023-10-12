@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Артисты</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+        <h:dataTable value="#{artistBean.artistList}" var="a">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{a.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                <h:outputText value="#{a.name}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">X</f:facet>
+                <h:commandButton value="Delete" action="#{artistBean.delete(a.id)}"/>
+            </h:column>
+        </h:dataTable>
+        </h:form>
+        <h:form>
+            <h:outputLabel value="New Artist:"/>
+            <h:inputText value="#{artistBean.artist.name}"/>
+            <h:commandButton value="Add" action="#{artistBean.add()}"/>
+        </h:form>
+    </h:body>
+</f:view>
+</html>
